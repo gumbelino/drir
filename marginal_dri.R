@@ -62,7 +62,7 @@ for (case in cases) {
       
       marginal_dri[[length(marginal_dri)+1]] <- tibble(
         cx,
-        mdri = dri - original_dri
+        mdri = dri - original_dri ## FIXME: I think it should be the opposite.
       )
       
     }
