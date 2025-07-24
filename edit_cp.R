@@ -4,6 +4,9 @@ library(dplyr)
 # input data files
 HUMAN_DATA_FILE <- "data/human_data.csv"
 
+# output data files
+OPTIMIZATION_RESULTS_FILE <- "output/optimization_results.csv"
+
 # load data
 human_data <- read_csv(HUMAN_DATA_FILE, show_col_types = FALSE)
 
@@ -51,11 +54,12 @@ for (case in cases) {
   cat("RESULTS FOR", case, "\n",
     "\tOPTIMAL DRI:", optimal_dri, "| ORIGINAL DRI:", original_dri, "| DIFF:", 
       diff_dri, 
-      "\n\tKEEP", optimal_nc, "/", original_nc, "considerations |", ratio_nc, "%\n")
+      "\n\tKEEP", optimal_nc, "/", original_nc, "considerations |", ratio_nc,
+    "%\n")
   
 }
 
 optimization_res <- bind_rows(optimization_res)
 optimal_human_data <- bind_rows(optimal_human_data)
 
-write_csv(optimization_res, "optimal")
+write_csv(optimization_res, OPTIMIZATION_RESULTS_FILE)
