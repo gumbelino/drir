@@ -4,12 +4,15 @@ library(tidyr)
 
 # input data files
 HUMAN_DATA_FILE <- "data/human_data.csv"
+SURVEY_DATA_FILE <- "data/survey.xlsx"
 
 # output data files
 MARGINAL_RESULTS_FILE <- "output/marginal_results.csv"
 
 # load data
 human_data <- read_csv(HUMAN_DATA_FILE, show_col_types = FALSE)
+survey <- read_csv(SURVEY_DATA_FILE, show_col_types = FALSE)
+
 
 # source helper functions
 source("dri_functions.R")

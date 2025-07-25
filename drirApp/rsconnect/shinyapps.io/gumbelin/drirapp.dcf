@@ -5,7 +5,7 @@ account: gumbelin
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 15122441
-bundleId: 10674459
+bundleId: 10674900
 url: https://gumbelin.shinyapps.io/drirapp/
 version: 1
 asMultiple: FALSE

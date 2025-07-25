@@ -6,7 +6,7 @@ library(shiny) # Load the shiny package
 # Define the UI using navbarPage for a multi-page layout
 navbarPage(
   # Application title displayed in the navigation bar
-  title = "drir",
+  title = "Enhanced Shiny App",
   
   # Add custom CSS for a slightly prettier look (e.g., font, background)
   # This uses tags$head to insert HTML into the document's head
@@ -53,6 +53,36 @@ navbarPage(
       #filePreview th {
         background-color: #f2f2f2;
         font-weight: bold;
+      }
+      /* Style for the filter buttons */
+      .filter-button {
+        background-color: #007bff; /* Blue button */
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      .filter-button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+      .clear-filter-button {
+        background-color: #dc3545; /* Red button for clearing */
+      }
+      .clear-filter-button:hover {
+        background-color: #c82333;
+      }
+      /* Style for grayed-out rows */
+      .grayed-out {
+        opacity: 0.5;
+        background-color: #f0f0f0;
+        text-decoration: line-through;
       }
     "))
   ),
@@ -173,15 +203,21 @@ navbarPage(
                      selected = '"'),
         tags$hr(),
         
-        h2("Filter by 'case' Column"), # Section title for filtering
+        h2("Filter by 'case'"), # Section title for filtering
         # UI output for dynamic select input for 'case' column
-        uiOutput("caseSelector")
+        uiOutput("caseSelector"),
+        tags$hr(),
+        
+        h2("Filter by 'stage_id'"), # New section for stage_id filtering
+        # UI output for dynamic stage_id filter buttons
+        uiOutput("stageFilterButtons")
       ),
       
       # Main panel for displaying the file preview
       mainPanel(
         h2("CSV File Preview"), # Section title
-        tableOutput("filePreview") # Output for the table preview
+        textOutput("sumC1Display"), # Display the sum of 'C1'
+        uiOutput("filePreview") # Output for the table preview (now uiOutput)
       )
     )
   )
